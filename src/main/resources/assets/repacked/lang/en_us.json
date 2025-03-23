@@ -1,0 +1,17 @@
+{
+  "key.repacked.reload" : "Reload Resource Packs",
+  "key.repacked.open_menu" : "Profile Editor",
+  "category.repacked.general" : "Repacked",
+  "text.config.repacked-client.title" : "Repacked Client Config",
+  "text.config.repacked-client.option.enabled" : "Enabled",
+  "text.config.repacked-client.option.overridePackReload" : "Override Pack Reload",
+  "text.config.repacked-client.option.reRenderWorld" : "Re-render World",
+  "text.config.repacked-client.option.disablePacks" : "Disable Packs",
+  "text.config.repacked-client.option.enabled.tooltip" : "Enable repacked functionality",
+  "text.config.repacked-client.option.overridePackReload.tooltip" : "Override the default minecraft resource pack reload screen\n with a background process that runs asynchronously",
+  "text.config.repacked-client.option.reRenderWorld.tooltip" : "If repacked should re-render the world after a resource pack reload\nThis is HIGHLY recommended to be enabled unless you know what you are doing",
+  "text.config.repacked-client.option.disablePacks.tooltip" : "If repacked should disable all your currently enabled packs\n when you join a world/server that you have setup a profile for,\n before enabling the chosen packs for that profile",
+  "text.config.repacked-client.section.general" : "General Settings",
+  "text.config.repacked-client.section.reload" : "Reload Resource Settings",
+  "text.config.repacked-client.section.pack-profile" : "Pack Profile Settings"
+}

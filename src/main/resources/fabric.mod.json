@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "repacked",
+  "version": "${version}",
+  "name": "Repacked",
+  "description": "A default project used by JTechGaming for all their mods",
+  "authors": [],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/repacked/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.jtech.repacked.client.RepackedClient"
+    ],
+    "main": [
+      "me.jtech.repacked.Repacked"
+    ]
+  },
+  "mixins": [
+    "repacked.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "accessWidener" : "repacked.accesswidener"
+}
