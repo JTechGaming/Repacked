@@ -20,6 +20,7 @@ public class ClientConfig {
     @SectionHeader("reload")
     public boolean overridePackReload = true;
     public boolean reRenderWorld = true;
+    public boolean showReloadThrobber = true;
     @SectionHeader("pack-profile")
     public boolean disablePacks = true;
 }

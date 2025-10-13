@@ -11,6 +11,8 @@ import net.minecraft.util.Util;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class PackUtils {
     private static List<ResourcePackProfile> resourcePacks;
@@ -23,13 +25,16 @@ public class PackUtils {
         return resourcePacks.size() > 1;
     }
 
+    private static final Executor workerExecutor = Executors.newSingleThreadExecutor();
+
     public static void reloadPack() {
+        RepackedClient.loading = true;
         MinecraftClient client = MinecraftClient.getInstance();
         Repacked.LOGGER.info("Reloading pack");
         client.getResourcePackManager().scanPacks();
         List<ResourcePack> list = client.resourcePackManager.createResourcePacks();
         client.resourceReloadLogger.reload(ResourceReloadLogger.ReloadReason.UNKNOWN, list);
-        client.resourceManager.reload(Util.getMainWorkerExecutor(), client, MinecraftClient.COMPLETED_UNIT_FUTURE, list).whenComplete().thenRun(() -> RepackedClient.reloaded = RepackedClient.CONFIG.reRenderWorld());
+        client.resourceManager.reload(workerExecutor, client, MinecraftClient.COMPLETED_UNIT_FUTURE, list).whenComplete().thenRun(RepackedClient::reloadWorld);
         client.resourceReloadLogger.finish();
         client.serverResourcePackLoader.onReloadSuccess();
     }
@@ -113,6 +118,6 @@ public class PackUtils {
     }
 
     public static int getCurrentPackFormat() {
-        return SharedConstants.getGameVersion().getResourceVersion(ResourceType.CLIENT_RESOURCES);
+        return SharedConstants.getGameVersion().packVersion(ResourceType.CLIENT_RESOURCES);
     }
 }
